@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Automat</string>
+    <string name="title_homepage">孝昌广电购物体验中心</string>
+    <string name="text_btn_homepage_c">C</string>
+    <string name="text_btn_homepage_b">B</string>
+    <string name="text_btn_homepage_a">A</string>
+    <string name="text_btn_homepage_9">9</string>
+    <string name="text_btn_homepage_8">8</string>
+    <string name="text_btn_homepage_7">7</string>
+    <string name="text_btn_homepage_6">6</string>
+    <string name="text_btn_homepage_5">5</string>
+    <string name="text_btn_homepage_4">4</string>
+    <string name="text_btn_homepage_3">3</string>
+    <string name="text_btn_homepage_2">2</string>
+    <string name="text_btn_homepage_1">1</string>
+    <string name="homepage_confirm">选择货道</string>
+    <string name="huodaobianhao">货道编号</string>
+</resources>
