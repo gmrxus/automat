@@ -2,6 +2,7 @@ package com.zzrh.automat.network;
 
 import com.zzrh.automat.common.Urls;
 import com.zzrh.automat.network.api.DownloadApi;
+import com.zzrh.automat.network.api.GoodsApi;
 import com.zzrh.automat.network.api.LunxunApi;
 
 import okhttp3.OkHttpClient;
@@ -16,38 +17,52 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class Network {
-	private static LunxunApi lunxunApi;
-	private static DownloadApi downloadApi;
+    private static LunxunApi lunxunApi;
+    private static DownloadApi downloadApi;
+    private static GoodsApi goodsApi;
 
-	private static Converter.Factory gsonConverterFactory = GsonConverterFactory.create();
-	private static CallAdapter.Factory rxJava2CallAdapterFactory = RxJava2CallAdapterFactory.create();
-	private static OkHttpClient okHttpClient = new OkHttpClient();
+    private static Converter.Factory gsonConverterFactory = GsonConverterFactory.create();
+    private static CallAdapter.Factory rxJava2CallAdapterFactory = RxJava2CallAdapterFactory.create();
+    private static OkHttpClient okHttpClient = new OkHttpClient();
 
-	public static LunxunApi getLunxunApi() {
-		if (lunxunApi == null) {
-			Retrofit retrofit = new Retrofit.Builder()
-					.client(okHttpClient)
-					.baseUrl(Urls.IP)
-					.addConverterFactory(gsonConverterFactory)
-					.addCallAdapterFactory(rxJava2CallAdapterFactory)
-					.build();
-			lunxunApi = retrofit.create(LunxunApi.class);
-		}
-		return lunxunApi;
-	}
+    public static LunxunApi getLunxunApi() {
+        if (lunxunApi == null) {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .client(okHttpClient)
+                    .baseUrl(Urls.IP)
+                    .addConverterFactory(gsonConverterFactory)
+                    .addCallAdapterFactory(rxJava2CallAdapterFactory)
+                    .build();
+            lunxunApi = retrofit.create(LunxunApi.class);
+        }
+        return lunxunApi;
+    }
 
-	public static DownloadApi getDownloadApi() {
-		if (downloadApi == null) {
-			downloadApi = new Retrofit.Builder()
-					.client(okHttpClient)
-					.baseUrl(Urls.IP)
-					.addConverterFactory(gsonConverterFactory)
-					.addCallAdapterFactory(rxJava2CallAdapterFactory)
-					.build()
-					.create(DownloadApi.class);
-		}
-		return downloadApi;
-	}
+    public static DownloadApi getDownloadApi() {
+        if (downloadApi == null) {
+            downloadApi = new Retrofit.Builder()
+                    .client(okHttpClient)
+                    .baseUrl(Urls.IP)
+                    .addConverterFactory(gsonConverterFactory)
+                    .addCallAdapterFactory(rxJava2CallAdapterFactory)
+                    .build()
+                    .create(DownloadApi.class);
+        }
+        return downloadApi;
+    }
+
+    public static GoodsApi getGoodsApi() {
+        if (goodsApi == null) {
+            goodsApi = new Retrofit.Builder()
+                    .client(okHttpClient)
+                    .baseUrl(Urls.IP)
+                    .addConverterFactory(gsonConverterFactory)
+                    .addCallAdapterFactory(rxJava2CallAdapterFactory)
+                    .build()
+                    .create(GoodsApi.class);
+        }
+        return goodsApi;
+    }
 
 
 }

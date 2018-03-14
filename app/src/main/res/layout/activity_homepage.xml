@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -22,44 +21,49 @@
             android:format24Hour="yyy-MM-dd hh:mm:ss EEEE"
             android:gravity="center"
             android:textColor="@color/white"
-            android:textStyle="normal"/>
+            android:textSize="16sp"
+            android:textStyle="normal" />
 
         <ImageView
             android:id="@+id/iv_homepage_setting"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="5dp"
-            android:layout_toLeftOf="@+id/tv_homepage_numberstr"
-            android:src="@drawable/ic_homepage_setting"/>
-
-        <TextView
-            android:id="@+id/tv_homepage_numberstr"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginRight="5dp"
-            android:layout_toLeftOf="@+id/v_homepage_gap"
-            android:gravity="center"
-            android:text="机台编号"
-            android:textColor="@color/white"/>
-
-
-        <View
-            android:id="@+id/v_homepage_gap"
-            android:layout_width="1dp"
-            android:layout_height="24dp"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
             android:layout_toLeftOf="@+id/tv_homepage_number"
-            android:background="@color/white"/>
+            android:src="@drawable/ic_homepage_setting" />
 
-        <TextView
+        <!--<TextView-->
+        <!--android:id="@+id/tv_homepage_numberstr"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:layout_toLeftOf="@+id/v_homepage_gap"-->
+        <!--android:gravity="center"-->
+        <!--android:text="机台编号"-->
+        <!--android:textSize="16sp"-->
+        <!--android:textColor="@color/white" />-->
+
+
+        <!--<View-->
+        <!--android:id="@+id/v_homepage_gap"-->
+        <!--android:layout_width="1dp"-->
+        <!--android:layout_height="24dp"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginRight="5dp"-->
+        <!--android:layout_toLeftOf="@+id/tv_homepage_number"-->
+        <!--android:background="@color/white" />-->
+
+
+        <com.maning.library.SwitcherView
             android:id="@+id/tv_homepage_number"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:gravity="center"
-            android:text="123-345-332"
-            android:textColor="@color/white"/>
+            android:foregroundGravity="center"
+            app:switcherRollingTime="4000"
+            app:switcherTextColor="@color/white" />
+
+
     </RelativeLayout>
 
     <TextView
@@ -72,19 +76,25 @@
         android:text="@string/title_homepage"
         android:textColor="@color/white"
         android:textSize="@dimen/title"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_homepage"
+    <!--<android.support.v7.widget.RecyclerView-->
+    <!--android:id="@+id/rv_homepage"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_above="@+id/rl_homepage_bottom"-->
+    <!--android:layout_below="@+id/tv_homepage_title" />-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_homepage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/rl_homepage_bottom"
-        android:layout_below="@+id/tv_homepage_title"/>
+        android:layout_below="@+id/tv_homepage_title" />
 
     <RelativeLayout
         android:id="@+id/rl_homepage_bottom"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="280dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:background="@color/white"
@@ -96,7 +106,7 @@
             android:layout_height="@dimen/bottom_size"
             android:background="@drawable/shape_bg_btn_homepage_bottom"
             android:includeFontPadding="false"
-            android:text="@string/text_btn_homepage_1"/>
+            android:text="@string/text_btn_homepage_1" />
 
         <Button
             android:id="@+id/btn_homepage_bottom_2"
@@ -106,7 +116,7 @@
             android:layout_marginLeft="@dimen/margin_def"
             android:layout_toEndOf="@+id/btn_homepage_bottom_1"
             android:background="@drawable/shape_bg_btn_homepage_bottom"
-            android:text="@string/text_btn_homepage_2"/>
+            android:text="@string/text_btn_homepage_2" />
 
         <Button
             android:id="@+id/btn_homepage_bottom_3"
@@ -116,7 +126,7 @@
             android:layout_marginLeft="@dimen/margin_def"
             android:layout_toEndOf="@+id/btn_homepage_bottom_2"
             android:background="@drawable/shape_bg_btn_homepage_bottom"
-            android:text="@string/text_btn_homepage_3"/>
+            android:text="@string/text_btn_homepage_3" />
 
         <Button
             android:id="@+id/btn_homepage_bottom_4"
@@ -126,7 +136,7 @@
             android:layout_marginLeft="@dimen/margin_def"
             android:layout_toEndOf="@+id/btn_homepage_bottom_3"
             android:background="@drawable/shape_bg_btn_homepage_bottom"
-            android:text="@string/text_btn_homepage_4"/>
+            android:text="@string/text_btn_homepage_4" />
 
         <Button
             android:id="@+id/btn_homepage_bottom_5"
@@ -136,7 +146,7 @@
             android:layout_marginLeft="@dimen/margin_def"
             android:layout_toEndOf="@+id/btn_homepage_bottom_4"
             android:background="@drawable/shape_bg_btn_homepage_bottom"
-            android:text="@string/text_btn_homepage_5"/>
+            android:text="@string/text_btn_homepage_5" />
 
         <Button
             android:id="@+id/btn_homepage_bottom_6"
@@ -146,7 +156,7 @@
             android:layout_marginLeft="@dimen/margin_def"
             android:layout_toEndOf="@+id/btn_homepage_bottom_5"
             android:background="@drawable/shape_bg_btn_homepage_bottom"
-            android:text="@string/text_btn_homepage_6"/>
+            android:text="@string/text_btn_homepage_6" />
 
         <Button
             android:id="@+id/btn_homepage_bottom_7"
@@ -156,7 +166,7 @@
             android:layout_marginLeft="@dimen/margin_def"
             android:layout_toEndOf="@+id/btn_homepage_bottom_6"
             android:background="@drawable/shape_bg_btn_homepage_bottom"
-            android:text="@string/text_btn_homepage_7"/>
+            android:text="@string/text_btn_homepage_7" />
 
         <Button
             android:id="@+id/btn_homepage_bottom_8"
@@ -166,7 +176,7 @@
             android:layout_marginLeft="@dimen/margin_def"
             android:layout_toEndOf="@+id/btn_homepage_bottom_7"
             android:background="@drawable/shape_bg_btn_homepage_bottom"
-            android:text="@string/text_btn_homepage_8"/>
+            android:text="@string/text_btn_homepage_8" />
 
         <Button
             android:id="@+id/btn_homepage_bottom_9"
@@ -176,7 +186,7 @@
             android:layout_marginLeft="@dimen/margin_def"
             android:layout_toEndOf="@+id/btn_homepage_bottom_8"
             android:background="@drawable/shape_bg_btn_homepage_bottom"
-            android:text="@string/text_btn_homepage_9"/>
+            android:text="@string/text_btn_homepage_9" />
 
         <Button
             android:id="@+id/btn_homepage_bottom_a"
@@ -187,7 +197,7 @@
             android:layout_toEndOf="@+id/btn_homepage_bottom_9"
             android:background="@drawable/shape_bg_btn_homepage_bottom"
             android:text="@string/text_btn_homepage_a"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/btn_homepage_bottom_b"
@@ -197,7 +207,7 @@
             android:layout_marginLeft="@dimen/margin_def"
             android:layout_toEndOf="@+id/btn_homepage_bottom_a"
             android:background="@drawable/shape_bg_btn_homepage_bottom"
-            android:text="@string/text_btn_homepage_b"/>
+            android:text="@string/text_btn_homepage_b" />
 
         <Button
             android:id="@+id/btn_homepage_bottom_c"
@@ -207,19 +217,20 @@
             android:layout_marginLeft="@dimen/margin_def"
             android:layout_toEndOf="@+id/btn_homepage_bottom_b"
             android:background="@drawable/shape_bg_btn_homepage_bottom"
-            android:text="@string/text_btn_homepage_c"/>
+            android:text="@string/text_btn_homepage_c" />
 
         <TextView
             android:id="@+id/tv_homepage_huodao"
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="24dp"
             android:layout_marginRight="20dp"
             android:layout_toStartOf="@+id/btn_homepage_confirm"
             android:background="@drawable/shape_bg_tv_homepage_bottom"
             android:gravity="center"
             android:text="@string/huodaobianhao"
-            android:textColor="@color/gray_42"/>
+            android:textColor="@color/gray_9E" />
 
 
         <Button
@@ -228,7 +239,8 @@
             android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
+            android:layout_marginBottom="24dp"
             android:background="@drawable/shape_bg_btn_homepage_confirm"
-            android:text="@string/homepage_confirm"/>
+            android:text="@string/homepage_confirm" />
     </RelativeLayout>
 </RelativeLayout>

@@ -20,7 +20,6 @@ import com.zzrh.automat.module.homepage.HomePageActivity;
 import java.io.File;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class AdActivity extends BaseActivity implements AdContract.View {
@@ -39,7 +38,6 @@ public class AdActivity extends BaseActivity implements AdContract.View {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_ad);
-		ButterKnife.bind(this);
 		mPresenter = new AdPresenter(this, this);
 
 
@@ -94,7 +92,7 @@ public class AdActivity extends BaseActivity implements AdContract.View {
 	public void showDefImg() {
 		mVvAd.setVisibility(View.GONE);
 		mIvAd.setVisibility(View.VISIBLE);
-		Glide.with(AdActivity.this).load(R.drawable.ad_img_def_01).into(mIvAd);
+		Glide.with(AdActivity.this).load(R.drawable.def_img).into(mIvAd);
 	}
 
 	@Override

@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface HomePageContract {
 	interface View extends BaseView<Presenter> {
-		void showGoods();
+		void showGoods(List<Goods> goods);
 
 		void refresh();
 

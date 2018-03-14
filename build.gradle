@@ -20,6 +20,7 @@ allprojects {
         jcenter()
         maven { url 'https://oss.jfrog.org/libs-snapshot' }
         maven { url "http://lib.gcssloop.com/repository/gcssloop-central/" }
+        maven { url "https://jitpack.io" }
         google()
     }
 }

@@ -28,11 +28,6 @@
         <service android:name=".service.LunxunService"/>
         <service android:name=".service.DownloadService"/>
 
-        <receiver android:name=".broadcastreciver.MyReceiver">
-            <intent-filter>
-                <action android:name="zzrh.automat.pic"/>
-            </intent-filter>
-        </receiver>
     </application>
 
 

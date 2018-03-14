@@ -7,17 +7,23 @@ import com.orhanobut.logger.Logger;
  */
 
 public class LogUtil {
-	public static boolean isLog = true;
+    public static boolean isLog = true;
 
-	public static void logD(Object msg) {
-		if (isLog) {
-			Logger.d(msg);
-		}
-	}
+    public static void logD(Object msg) {
+        if (isLog) {
+            Logger.d(msg);
+        }
+    }
 
-	public static void logE(String msg, Object o) {
-		if (isLog) {
-			Logger.e(msg, o);
-		}
-	}
+    public static void logE(String msg, Object o) {
+        if (isLog) {
+            Logger.e(msg, o);
+        }
+    }
+
+    public static void logJ(String jsonObj) {
+        if (isLog) {
+            Logger.json(jsonObj);
+        }
+    }
 }

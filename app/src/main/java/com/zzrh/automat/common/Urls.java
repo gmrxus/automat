@@ -6,7 +6,11 @@ package com.zzrh.automat.common;
 
 public interface Urls {
 
-	String IP = "http://www.4fz3.com/";
-	//?mid=000BABC8D313
-	String lunxun = "/front/vendingApi/adminApi/uploadInfo";
+    String IP = "http://www.4fz3.com/";
+    //?mid=000BABC8D313
+    String lunxun = "/front/vendingApi/adminApi/uploadInfo";
+    //获取商品列表
+    String goodsList = "/front/vendingApi/goodsApi/goodslist";
+    //获取支付的二维码
+    String payCode = "/front/weChatScanOnePayment/createQRcode";
 }

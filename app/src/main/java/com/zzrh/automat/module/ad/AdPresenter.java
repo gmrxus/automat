@@ -27,10 +27,7 @@ public class AdPresenter implements AdContract.Presenter {
 
 	@Override
 	public void start() {
-		// TODO: 2018/3/6 开启轮询服务
 		mContext.startService(new Intent(mContext, LunxunService.class));
-
-
 	}
 
 	@Override
