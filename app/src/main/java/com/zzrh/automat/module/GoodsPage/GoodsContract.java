@@ -15,6 +15,11 @@ public interface GoodsContract {
         void showPayCode(String url, String type);
 
         void showMsg(String msg);
+
+        void showPayDialog();
+
+        void showPayFailDialog();
+
     }
 
     interface Presenter extends BasePresenter {

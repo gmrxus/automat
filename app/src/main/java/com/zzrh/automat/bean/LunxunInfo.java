@@ -4,13 +4,16 @@ package com.zzrh.automat.bean;
  * Created by Administrator on 2018/3/7.
  */
 
+/**
+ * 轮询得到的json的bean类
+ */
 public class LunxunInfo {
 
 
 	/**
 	 * t : 3
 	 * data : http://www.4fz3.com/filebase/upload/machine/img/1517213866079.jpg
-	 * mid : 000BABC8D313
+	 * MID : 000BABC8D313
 	 * version : 1520405148865
 	 */
 
@@ -56,7 +59,7 @@ public class LunxunInfo {
 		return "LunxunInfo{" +
 				"t=" + t +
 				", data='" + data + '\'' +
-				", mid='" + mid + '\'' +
+				", MID='" + mid + '\'' +
 				", version='" + version + '\'' +
 				'}';
 	}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_dialog_pay_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_dialog_pay_countdown"
+        android:layout_marginTop="34dp"
+        android:layout_toEndOf="@+id/iv_dialog_pay_progress"
+        android:text="请等待出货"
+        android:textColor="@color/mainColor"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/iv_dialog_pay_progress"
+        android:layout_width="150dp"
+        android:layout_height="107dp"
+        android:layout_alignEnd="@+id/tv_dialog_pay_countdown_title"
+        android:layout_below="@+id/tv_dialog_pay_countdown"
+        android:src="@drawable/ic_loadin" />
+
+    <TextView
+        android:id="@+id/tv_dialog_pay_countdown_title"
+        android:layout_width="112dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="14dp"
+        android:gravity="center|right"
+        android:paddingRight="@dimen/padding_16dp"
+        android:text="倒计时:"
+        android:textColor="@color/mainColor"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_dialog_pay_countdown"
+        android:layout_width="112dp"
+        android:layout_height="47dp"
+        android:layout_alignBottom="@+id/tv_dialog_pay_countdown_title"
+        android:layout_alignTop="@+id/tv_dialog_pay_countdown_title"
+        android:layout_marginStart="6dp"
+        android:layout_toEndOf="@+id/tv_dialog_pay_countdown_title"
+        android:gravity="center|left"
+        android:text="20"
+        android:textColor="@color/mainColor"
+        android:textSize="20sp" />
+
+</RelativeLayout>

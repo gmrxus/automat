@@ -11,25 +11,29 @@ import java.util.List;
  */
 
 public interface HomePageContract {
-	interface View extends BaseView<Presenter> {
-		void showGoods(List<Goods> goods);
+    interface View extends BaseView<Presenter> {
+        void showGoods(List<Goods> goods);
 
-		void refresh();
+        void refresh();
 
-		void showDetail(Goods goods);
+        void showDetail(Goods goods);
 
-		void playMusic();
+        void playMusic();
 
-		void showPayCode();
-	}
+        void showPayCode();
 
-	interface Presenter extends BasePresenter {
-		//加载商品数据
-		List<Goods> loadData();
+        void showMsg(String msg);
+    }
 
-		//加载支付数据
-		String loadPaydata();
+    interface Presenter extends BasePresenter {
+        //加载商品数据
+        void loadData();
 
-	}
+        //加载支付数据
+        String loadPaydata();
+
+        void showGoodsForHd(String hdId);
+
+    }
 
 }

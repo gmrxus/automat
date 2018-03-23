@@ -26,7 +26,7 @@ public class ListPageUtil {
 
     /**
      * @param list 大集合
-     * @param n 分成几页
+     * @param n    分成几页
      * @param <T>
      * @return
      */
@@ -54,5 +54,40 @@ public class ListPageUtil {
             strList.add(tempList);
         }
         return strList;
+    }
+
+
+    /**
+     * List切割成固定大小的list,最后一个list为余数
+     *
+     * @param list   需要切割的list
+     * @param volume 标准容量大小
+     * @param <T>
+     * @return
+     */
+    public static <T> List<List<T>> sectionList(List<T> list, int volume) {
+        //        if (list.volume() > volume) {
+//            List<T> ts = list.subList(0, volume);
+//            List<T> t = new ArrayList<>();
+//            t.addAll(ts);
+//            list.removeAll(t);
+//            parentList.add(t);
+//            sectionList(parentList, list, volume);
+//        } else {
+//            parentList.add(list);
+//        }
+//        return parentList;
+        ArrayList<List<T>> pList = new ArrayList<>();
+        int size = list.size();
+        if (size > volume) {
+            int ceil = (int) Math.ceil((double) size / volume);
+            for (int i = 0; i < ceil; i++) {
+                List<T> ts = list.subList(i * volume, (i + 1) * volume < size ? (i + 1) * volume : size);
+                pList.add(ts);
+            }
+        } else {
+            pList.add(list);
+        }
+        return pList;
     }
 }

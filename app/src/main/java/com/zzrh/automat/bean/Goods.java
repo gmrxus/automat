@@ -4,6 +4,9 @@ package com.zzrh.automat.bean;
  * Created by Administrator on 2018/3/7.
  */
 
+/**
+ * 单个商品json解析的bean类
+ */
 public class Goods {
 
     /**

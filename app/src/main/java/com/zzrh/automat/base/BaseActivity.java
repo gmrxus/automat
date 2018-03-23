@@ -2,7 +2,7 @@ package com.zzrh.automat.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import com.zzrh.automat.App;
@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
  * Created by Administrator on 2018/3/2.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends FragmentActivity {
     private final String TAG = this.getClass().getSimpleName();
 
     @Override

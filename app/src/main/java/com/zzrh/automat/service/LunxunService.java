@@ -52,17 +52,17 @@ public class LunxunService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        LogUtil.logD("LunxunService开始执行");
-        lunxun();
+        LogUtil.logD("LunxunService没有执行");
+//        lunxun();
         return START_STICKY;
     }
 
     private void lunxun() {
-        Observable.interval(0, Keys.Conifg.LUNXUN_JIANGE, TimeUnit.SECONDS)
+        Observable.interval(0, Keys.Config.LUNXUN_JIANGE, TimeUnit.SECONDS)
                 .doOnNext(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception {
-                        Network.getLunxunApi().lunxun(Keys.Conifg.mid)
+                        Network.getLunxunApi().lunxun(Keys.Config.MID)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(Schedulers.io())
                                 .subscribe(new Observer<LunxunInfo>() {
@@ -76,7 +76,7 @@ public class LunxunService extends Service {
                                         if (BuildConfig.DEBUG) Log.d(TAG, lunxunInfo.toString());
                                         int type = lunxunInfo.getT();
                                         switch (type) {
-                                            case Keys.Conifg.TYPE_T://温度
+                                            case Keys.Config.TYPE_T://温度
                                                 // TODO: 2018/3/13 温度变更
                                                 String data = lunxunInfo.getData();
                                                 String[] splitData = data.split("&");
@@ -88,22 +88,22 @@ public class LunxunService extends Service {
                                                     //双柜机,两边温度都要设置
                                                 }
                                                 break;
-                                            case Keys.Conifg.TYPE_VIDEO://下载视频
+                                            case Keys.Config.TYPE_VIDEO://下载视频
                                                 startDownloadService(lunxunInfo, type);
                                                 break;
-                                            case Keys.Conifg.TYPE_IMG://下载图片
+                                            case Keys.Config.TYPE_IMG://下载图片
                                                 startDownloadService(lunxunInfo, type);
                                                 break;
-                                            case Keys.Conifg.TYPE_URL_MALL://商城地址变更
+                                            case Keys.Config.TYPE_URL_MALL://商城地址变更
                                                 SPUtil.put(mContext, Keys.SPKeys.URL_MALL, lunxunInfo.getData());
                                                 break;
-                                            case Keys.Conifg.TYPE_WELCOME_V://更换欢迎用语
+                                            case Keys.Config.TYPE_WELCOME_V://更换欢迎用语
                                                 SPUtil.put(mContext, Keys.SPKeys.WELCOME_V, lunxunInfo.getData());
                                                 break;
-                                            case Keys.Conifg.TYPE_URL_LUNXUN://轮询地址变更
+                                            case Keys.Config.TYPE_URL_LUNXUN://轮询地址变更
                                                 SPUtil.put(mContext, Keys.SPKeys.URL_LUNXUN, lunxunInfo.getData());
                                                 break;
-                                            case Keys.Conifg.TYPE_URL_FANKUI://出货反馈地址变更
+                                            case Keys.Config.TYPE_URL_FANKUI://出货反馈地址变更
                                                 SPUtil.put(mContext, Keys.SPKeys.URL_FANKUI, lunxunInfo.getData());
                                                 break;
                                             case 9999:

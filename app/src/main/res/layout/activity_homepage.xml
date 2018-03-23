@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/rl_homepage"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="20dp"
         android:background="@color/colorPrimaryDark">
 
         <TextClock
@@ -21,7 +21,7 @@
             android:format24Hour="yyy-MM-dd hh:mm:ss EEEE"
             android:gravity="center"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="normal" />
 
         <ImageView
@@ -59,9 +59,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
             android:foregroundGravity="center"
             app:switcherRollingTime="4000"
-            app:switcherTextColor="@color/white" />
+            app:switcherTextColor="@color/white"
+            app:switcherTextSize="5sp" />
 
 
     </RelativeLayout>
@@ -69,7 +71,7 @@
     <TextView
         android:id="@+id/tv_homepage_title"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/rl_homepage"
         android:background="@color/mainColor"
         android:gravity="center"
@@ -91,14 +93,21 @@
         android:layout_above="@+id/rl_homepage_bottom"
         android:layout_below="@+id/tv_homepage_title" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/rl_homepage_bottom"
+        android:background="@color/gray_42" />
+
     <RelativeLayout
         android:id="@+id/rl_homepage_bottom"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="@dimen/below_height_homepage"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:background="@color/white"
         android:padding="@dimen/padding_def">
+
 
         <Button
             android:id="@+id/btn_homepage_bottom_1"
@@ -219,27 +228,29 @@
             android:background="@drawable/shape_bg_btn_homepage_bottom"
             android:text="@string/text_btn_homepage_c" />
 
-        <TextView
+        <EditText
             android:id="@+id/tv_homepage_huodao"
-            android:layout_width="80dp"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="@dimen/margin_b_homepage_bottom"
             android:layout_marginRight="20dp"
             android:layout_toStartOf="@+id/btn_homepage_confirm"
             android:background="@drawable/shape_bg_tv_homepage_bottom"
             android:gravity="center"
-            android:text="@string/huodaobianhao"
+            android:textSize="@dimen/f_top_card"
+            android:focusable="false"
+            android:hint="@string/huodaobianhao"
             android:textColor="@color/gray_9E" />
 
 
         <Button
             android:id="@+id/btn_homepage_confirm"
-            android:layout_width="80dp"
-            android:layout_height="40dp"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="@dimen/margin_b_homepage_bottom"
             android:background="@drawable/shape_bg_btn_homepage_confirm"
             android:text="@string/homepage_confirm" />
     </RelativeLayout>

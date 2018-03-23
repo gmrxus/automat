@@ -1,8 +1,10 @@
 package com.zzrh.automat.adapter;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,12 +27,15 @@ import butterknife.ButterKnife;
  */
 
 public class HomepageRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private static final String TAG = "HomepageRVAdapter";
 
     private Context mContext;
     private List<Goods> goodsList;
+    private int pagePosition;
 
-    public HomepageRVAdapter(Context mContext, List<Goods> goodsList) {
+    public HomepageRVAdapter(Context mContext, List<Goods> goodsList, int position) {
         this.mContext = mContext;
+        this.pagePosition = position;
         setGoodsList(goodsList);
     }
 
@@ -42,7 +47,6 @@ public class HomepageRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_rv_homepage_goods, parent, false);
-
         return new GoodsViewHolder(view);
     }
 
@@ -50,17 +54,40 @@ public class HomepageRVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         GoodsViewHolder viewHolder = (GoodsViewHolder) holder;
         Goods goods = goodsList.get(position);
-        viewHolder.tvHuodao.setText(goods.getHdId());
-        viewHolder.tvKucun.setText(goods.getGoodsStorage());
-        viewHolder.tvTitle.setText(goods.getGoodsName());
-        viewHolder.tvPrice.setText(goods.getGoodsPrice());
-        Glide.with(mContext)
-                .load(Keys.Conifg.GOODS_IMG_PATH +goodsList.get(position).getGoodsUrl())
-                .into(viewHolder.ivImg);
+        String hdId = goods.getHdId();
+        String goodsStorage = goods.getGoodsStorage();
+        String goodsName = goods.getGoodsName();
+        String goodsPrice = goods.getGoodsPrice();
+        viewHolder.tvHuodao.setText(hdId);
+        viewHolder.tvKucun.setText(goodsStorage);
+        viewHolder.tvTitle.setText(goodsName);
+        viewHolder.tvPrice.setText(goodsPrice);
+
+        String goodsImgUrl = goodsList.get(position).getGoodsUrl();
+        if ("0".equals(goodsStorage) || TextUtils.isEmpty(goodsStorage) || TextUtils.isEmpty(goodsName)) {
+            viewHolder.tvKucun.setText("无货");
+            viewHolder.rlTitle
+                    .setBackground(ContextCompat.getDrawable(mContext, R.drawable.shape_tiem_bg_long_graycolor));
+        }
+
+        if (!TextUtils.isEmpty(goodsImgUrl)) {
+            String str = Keys.Config.GOODS_IMG_PATH + goodsImgUrl;
+
+            Glide.with(mContext)
+                    .load(str)
+                    .into(viewHolder.ivImg);
+        } else {
+            Glide.with(mContext)
+                    .load(R.drawable.ic_error)
+                    .into(viewHolder.ivImg);
+        }
         viewHolder.cvP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                listener.onClick(v, position);
+                if (listener != null) {
+                    int rPosition = pagePosition * Keys.Config.PAGE_COLUMN_V * Keys.Config.PAGE_COLUMN_H;
+                    listener.onClick(v, position + rPosition);
+                }
             }
         });
 

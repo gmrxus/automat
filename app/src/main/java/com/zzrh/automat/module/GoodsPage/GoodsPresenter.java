@@ -36,11 +36,11 @@ public class GoodsPresenter implements GoodsContract.Presenter {
     @Override
     public void loadGoods(Goods goods) {
         mView.showGoods(goods);
-        loadPayCode("1");
+        loadPayCode(Keys.Config.QR_KEY_ALIPAY);
     }
 
     @Override
-    public void loadPayCode(String payType) {
+    public void loadPayCode(final String payType) {
         Network.getGoodsApi()
                 .loadPayCode(mGoods.getMachineGoodsId(), payType)
                 .subscribeOn(Schedulers.io())
@@ -49,13 +49,12 @@ public class GoodsPresenter implements GoodsContract.Presenter {
                     @Override
                     public void accept(PayCodeInfo payCodeInfo) throws Exception {
                         LogUtil.logD(payCodeInfo);
-                        if (Keys.Conifg.CORE_SUCCESS.equals(payCodeInfo.getReturnCode())) {
-                            mView.showPayCode(payCodeInfo.getData().getQrUrl(), "1");
+                        if (Keys.Config.CORE_SUCCESS.equals(payCodeInfo.getReturnCode())) {
+                            mView.showPayCode(payCodeInfo.getData().getQrUrl(), payType);
                         } else {
                             mView.showMsg(payCodeInfo.getMessage());
                         }
                     }
                 });
-
     }
 }

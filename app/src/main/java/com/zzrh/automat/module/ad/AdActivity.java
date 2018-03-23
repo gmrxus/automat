@@ -25,111 +25,113 @@ import butterknife.OnClick;
 public class AdActivity extends BaseActivity implements AdContract.View {
 
 
-	@BindView(R.id.vv_ad)
-	VideoView mVvAd;
-	@BindView(R.id.rl_ad)
-	RelativeLayout mRlAd;
-	@BindView(R.id.iv_ad)
-	ImageView mIvAd;
-	private AdContract.Presenter mPresenter;
-	private CountDownTimer mTimer = null;
+    @BindView(R.id.vv_ad)
+    VideoView mVvAd;
+    @BindView(R.id.rl_ad)
+    RelativeLayout mRlAd;
+    @BindView(R.id.iv_ad)
+    ImageView mIvAd;
+    private AdContract.Presenter mPresenter;
+    private CountDownTimer mTimer = null;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_ad);
-		mPresenter = new AdPresenter(this, this);
-
-
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ad);
+        mPresenter = new AdPresenter(this, this);
+    }
 
 
-	@Override
-	public void setPresenter(AdContract.Presenter presenter) {
-		this.mPresenter = presenter;
-	}
+    @Override
+    public void setPresenter(AdContract.Presenter presenter) {
+        this.mPresenter = presenter;
+    }
 
-	@Override
-	public void showImg(final File[] imgFiles) {
-		mVvAd.setVisibility(View.GONE);
-		mIvAd.setVisibility(View.VISIBLE);
-		mTimer = new CountDownTimer(System.currentTimeMillis(), Keys.Conifg.IMG_XUNHUAN_JIANGE *
-				1000) {
-			int i = 0;
+    @Override
+    public void showImg(final File[] imgFiles) {
+        mVvAd.setVisibility(View.GONE);
+        mIvAd.setVisibility(View.VISIBLE);
+        if (imgFiles.length == 0) {
+            Glide.with(this).load(R.drawable.def_img).into(mIvAd);
+            return;
+        }
+        mTimer = new CountDownTimer(System.currentTimeMillis(), Keys.Config.IMG_XUNHUAN_JIANGE *
+                1000) {
+            int i = 0;
 
-			@Override
-			public void onTick(long millisUntilFinished) {
-				Glide.with(AdActivity.this).load(imgFiles[i % imgFiles.length]).into(mIvAd);
-				i++;
+            @Override
+            public void onTick(long millisUntilFinished) {
+                Glide.with(AdActivity.this).load(imgFiles[i % imgFiles.length]).into(mIvAd);
+                i++;
 
-			}
+            }
 
-			@Override
-			public void onFinish() {
+            @Override
+            public void onFinish() {
 
-			}
-		};
-		mTimer.start();
+            }
+        };
+        mTimer.start();
 
-	}
+    }
 
-	@Override
-	public void showVideo() {
-		mIvAd.setVisibility(View.GONE);
-		mVvAd.setVisibility(View.VISIBLE);
-		mVvAd.setVideoURI(Uri.parse(getExternalFilesDir(Environment.DIRECTORY_MOVIES).listFiles()[0].getPath()));
-		mVvAd.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-			@Override
-			public void onCompletion(MediaPlayer mp) {
-				mp.start();
-				mp.setLooping(true);
-			}
-		});
-		mVvAd.start();
-	}
+    @Override
+    public void showVideo() {
+        mIvAd.setVisibility(View.GONE);
+        mVvAd.setVisibility(View.VISIBLE);
+        mVvAd.setVideoURI(Uri.parse(getExternalFilesDir(Environment.DIRECTORY_MOVIES).listFiles()[0].getPath()));
+        mVvAd.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.start();
+                mp.setLooping(true);
+            }
+        });
+        mVvAd.start();
+    }
 
-	@Override
-	public void showDefImg() {
-		mVvAd.setVisibility(View.GONE);
-		mIvAd.setVisibility(View.VISIBLE);
-		Glide.with(AdActivity.this).load(R.drawable.def_img).into(mIvAd);
-	}
+    @Override
+    public void showDefImg() {
+        mVvAd.setVisibility(View.GONE);
+        mIvAd.setVisibility(View.VISIBLE);
+        Glide.with(AdActivity.this).load(R.drawable.def_img).into(mIvAd);
+    }
 
-	@Override
-	protected void onPause() {
-		super.onPause();
-		if (mTimer != null) {
-			mTimer.cancel();
-		}
-		if (mVvAd.isPlaying()) {
-			mVvAd.pause();
-		}
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mTimer != null) {
+            mTimer.cancel();
+        }
+        if (mVvAd.isPlaying()) {
+            mVvAd.pause();
+        }
 
-	}
+    }
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		mPresenter.loadScreensaverRes();
-	}
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.loadScreensaverRes();
+    }
 
-	@Override
-	protected void onStop() {
-		super.onStop();
-	}
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 
 
-	@Override
-	protected void onDestroy() {
-		if (mPresenter != null) {
-			mPresenter = null;
-		}
-		super.onDestroy();
-		mVvAd.stopPlayback();
-	}
+    @Override
+    protected void onDestroy() {
+        if (mPresenter != null) {
+            mPresenter = null;
+        }
+        super.onDestroy();
+        mVvAd.stopPlayback();
+    }
 
-	@OnClick(R.id.rl_ad)
-	public void onViewClicked() {
-		startActivity(new Intent(AdActivity.this, HomePageActivity.class));
-	}
+    @OnClick(R.id.rl_ad)
+    public void onViewClicked() {
+        startActivity(new Intent(AdActivity.this, HomePageActivity.class));
+    }
 }

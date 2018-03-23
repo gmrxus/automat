@@ -6,6 +6,9 @@ import java.util.List;
  * Created by Gmrxus on 2018/3/12.
  */
 
+/**
+ * 获取商品列表的接口返回的整个json解析的bean类
+ */
 public class GoodsInfo {
 
     /**

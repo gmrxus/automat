@@ -6,6 +6,5 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_homgpage_fragment"
         android:layout_width="match_parent"
-        android:background="@drawable/shape_item_bg_long_maincolor"
         android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>

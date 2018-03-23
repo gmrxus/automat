@@ -4,6 +4,9 @@ package com.zzrh.automat.bean;
  * Created by Gmrxus on 2018/3/13.
  */
 
+/**
+ * 支付二维码接口反馈的bean类
+ */
 public class PayCodeInfo {
     /**
      * returnCode : success
