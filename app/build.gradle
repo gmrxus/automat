@@ -62,4 +62,6 @@ dependencies {
 
     compile 'com.tencent.bugly:crashreport:latest.release'
     compile 'com.tencent.bugly:nativecrashreport:latest.release'
+
+    compile 'com.github.kongqw:AndroidSerialPort:1.0.1'
 }

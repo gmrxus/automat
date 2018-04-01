@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 import com.zzrh.automat.R;
 import com.zzrh.automat.base.BaseActivity;
 import com.zzrh.automat.common.Keys;
-import com.zzrh.automat.module.homepage.HomePageActivity;
+import com.zzrh.automat.test.TestSerialPortActivity;
 
 import java.io.File;
 
@@ -132,6 +132,8 @@ public class AdActivity extends BaseActivity implements AdContract.View {
 
     @OnClick(R.id.rl_ad)
     public void onViewClicked() {
-        startActivity(new Intent(AdActivity.this, HomePageActivity.class));
+//        startActivity(new Intent(AdActivity.this, HomePageActivity.class));
+        startActivity(new Intent(AdActivity.this, TestSerialPortActivity.class));
+
     }
 }

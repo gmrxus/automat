@@ -14,8 +14,8 @@ public interface Keys {
 
     interface Config {
         //单柜的mid
-        String MID = "000BABC8D313";
-//        String MID = "HK001";
+//        String MID = "000BABC8D313";
+        String MID = "HK001";
 
 
         //轮询间隔
